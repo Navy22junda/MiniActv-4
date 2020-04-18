@@ -28,11 +28,12 @@ public class Main extends Activity implements OnClickListener {
         btnCancion.setOnClickListener(this);
         btnFin.setOnClickListener(this);
 
-        //Filter de el connectar i desconnectar auriculars
+        //Filter de el connectar i desconnectar auriculars (automàtic reciver)
         IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
-        MyReciver reciver = new MyReciver();
+        MyHeadsetReciver reciver = new MyHeadsetReciver();
         this.registerReceiver(reciver, filter);
 
+        //Manual Reciver
         in = new Intent(this, MyReciver.class);
     }
 
