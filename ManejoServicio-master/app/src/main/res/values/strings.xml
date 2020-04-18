@@ -7,4 +7,7 @@
     <string name="finaserv">Servicio Finalizado</string>
     <string name="chooseMusic">Seleccionando Cancion</string>
     <string name="chooseNoise">Seleccionando Sonido</string>
+    <string name="BroadcastNoise">Intent recibido ElReceptor - Inicio reproducción train.mp3</string>
+    <string name="BroadcastMusic">Intent recibido ElReceptor - Inicio reproducción bob_marley_cybl.mp3</string>
+    <string name="BroadcastStop">Intent recibido ElReceptor - Detencion reproduccion</string>
 </resources>

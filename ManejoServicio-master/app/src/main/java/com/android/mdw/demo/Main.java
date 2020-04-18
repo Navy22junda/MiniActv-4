@@ -2,7 +2,9 @@ package com.android.mdw.demo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,9 +28,33 @@ public class Main extends Activity implements OnClickListener {
         btnCancion.setOnClickListener(this);
         btnFin.setOnClickListener(this);
 
-        in = new Intent(this, ElServicio.class);
+        //Filter de el connectar i desconnectar auriculars
+        IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+        MyReciver reciver = new MyReciver();
+        this.registerReceiver(reciver, filter);
+
+        in = new Intent(this, MyReciver.class);
     }
 
+    @Override
+    public void onClick(View src) {
+        switch (src.getId()) {
+            case R.id.btnSonido:
+                in.putExtra("opcio", btnSonido.getText());
+                sendBroadcast(in);
+                break;
+            case R.id.btnCancion:
+                in.putExtra("opcio", btnCancion.getText());
+                sendBroadcast(in);
+                break;
+            case R.id.btnFin:
+                in.putExtra("opcio", "Parar sondidos");
+                sendBroadcast(in);
+                break;
+        }
+    }
+
+    /* Sense fer servir el BroadcastReciver directament el servei
     @Override
     public void onClick(View src) {
         switch (src.getId()) {
@@ -45,4 +71,5 @@ public class Main extends Activity implements OnClickListener {
                 break;
         }
     }
+    */
 }
